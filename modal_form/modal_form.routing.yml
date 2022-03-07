@@ -1,0 +1,9 @@
+modal_form.modal_controller:
+  path: 'modal/new-message'
+  defaults:
+    _title: 'New Message'
+    _controller: '\Drupal\modal_form\Controller\ModalController::openModalForm'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE

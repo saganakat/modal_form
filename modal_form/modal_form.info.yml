@@ -1,0 +1,5 @@
+name: Modal Form
+type: module
+description: 'Provides a custom Form in Modal'
+package: Custom
+core_version_requirement: ^9.2 || ^10
