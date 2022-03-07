@@ -7,3 +7,13 @@ modal_form.modal_controller:
     _permission: 'access content'
   options:
     no_cache: TRUE
+
+modal_form.button_modal:
+  path: 'modal/show-me-the-modal'
+  defaults:
+    _title: 'Show me the modal'
+    _controller: '\Drupal\modal_form\Controller\ModalController::onlyButtonOpenModal'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE

@@ -6,6 +6,7 @@ use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\OpenModalDialogCommand;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Form\FormBuilder;
+use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class ModalController extends ControllerBase {
@@ -51,8 +52,24 @@ class ModalController extends ControllerBase {
     $modal_form = $this->formBuilder->getForm('Drupal\modal_form\Form\ModalForm');
 
     // Añade un comando AJAX para abrir la ventana modal con el formulario incluido.
-    $response->addCommand(new OpenModalDialogCommand('Comienza algo grande', $modal_form, ['width' => '800']));
+    $response->addCommand(new OpenModalDialogCommand('Formulario', $modal_form, ['width' => '800']));
 
     return $response;
+  }
+
+  /**
+   * Botón de muestra.
+   */
+  public function onlyButtonOpenModal(): array
+  {
+    $build['show'] = [
+      '#type' => 'link',
+      '#title' => $this->t('Mostar modal'),
+      '#url' => Url::fromRoute('modal_form.modal_controller'),
+      '#attributes' => [
+        'class' => ['button', 'use-ajax'],
+      ]
+    ];
+    return $build;
   }
 }
